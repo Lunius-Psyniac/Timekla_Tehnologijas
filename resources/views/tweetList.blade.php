@@ -47,7 +47,7 @@
             font-size: 40px;
         }
         table {
-            width: 500px; /* Set the table width to 100% */
+            width: 1000px; /* Set the table width to 100% */
             border-collapse: collapse; /* Collapse borders between cells */
             margin-bottom: 20px; /* Add margin to separate the table and input fields */
         }
@@ -59,6 +59,8 @@
         .deleteItemButton {
             color: red;
             cursor: pointer;
+            
+            align-items: center;
         }
     </style>
 </head>
@@ -67,18 +69,18 @@
         <h1>Tweets</h1>
         <table id="itemList">
         <tbody>
-        <td>User</td>
-        <td>Title</td>
+        <td style='width:200px'>User</td>
+        <td style='width:150px'>Title</td>
         <td>Comment</td>
-        <td>Delete?</td>
+        <td style='width:30px'>Delete?</td>
     @foreach ($tweets as $tweet)
         <tr>
-            <td>{{ $tweet->user->name }}</td>
-            <td>{{ $tweet->title }}</td>
+            <td style='width:200px'>{{ $tweet->user->name }}</td>
+            <td style='width:150px'>{{ $tweet->title }}</td>
             <td>{{ $tweet->content }}</td>
             @if ($tweet->user_id === Auth::id())
                 <td style='width:30px'>
-                    <span class="deleteItemButton" data-index="{{ $tweet->id }}">X</span>
+                    <span style='width:30px' class="deleteItemButton" data-index="{{ $tweet->id }}">X</span>
                 </td>
             @else
                 <td style='width:30px'></td>
