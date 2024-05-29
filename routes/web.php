@@ -20,11 +20,11 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 
-Route::post('/add-item', [YourController::class, 'addItem'])
-    ->name('add.item');
+Route::post('/add-tweet', [TweetController::class, 'addTweet'])
+    ->name('add.tweet');
 
 
-Route::post('/delete-item', [ItemController::class, 'delete'])
+Route::post('/delete-item', [TweetController::class, 'delete'])
     ->name('delete.item');
 
 require __DIR__.'/auth.php';

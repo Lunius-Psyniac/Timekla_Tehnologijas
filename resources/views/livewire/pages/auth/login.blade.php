@@ -21,7 +21,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        return Redirect::to('/dashboard');
+        return Redirect::to('/tweets');
 
         
     }

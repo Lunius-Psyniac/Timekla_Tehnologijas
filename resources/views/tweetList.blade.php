@@ -67,10 +67,11 @@
         <h1>Tweets</h1>
         <table id="itemList">
         <tbody>
-                @foreach (session('items', []) as $key => $item)
+                @foreach ($tweets as $key => $item)
                     <tr>
-                        <td>{{ $item }}</td>
-                        <td style='width:30px'><span class="deleteItemButton" data-index="{{ $key }}">X</span></td>
+                        <td>{{ $item->title }}</td>
+                        <td>{{ $item->content }}</td>
+                        <td style='width:30px'><span class="deleteItemButton" data-index="{{ $item->id }}">X</span></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -89,17 +90,17 @@
             });
 
             $(document).on('click', '.deleteItemButton', function() {
-                var index = $(this).data('index');
+                var data = $(this).data();
                 $.ajax({
                     url: '{{ route('delete.item') }}',
                     type: 'POST',
-                    data: { index: index },
-                    success: function(response) {
-                        $('#itemList tbody').empty();
-                        $.each(response.items, function(index, item) {
-                            $('#itemList tbody').append('<tr><td>' + item + '<td style="width:30px"><span class="deleteItemButton" data-index="' + index + '">X</span></td></tr>');
-                        });
-                    },
+                    data: { id: data },
+                    // success: function(response) {
+                    //     $('#itemList tbody').empty();
+                    //     $.each(response.items, function(index, item) {
+                    //         $('#itemList tbody').append('<tr><td>' + item + '<td style="width:30px"><span class="deleteItemButton" data-index="' + index + '">X</span></td></tr>');
+                    //     });
+                    // },
                     error: function(xhr) {
                         alert('An error occurred.');
                         console.log(xhr);
@@ -108,13 +109,13 @@
             });
             
             $('#addItemButton').click(function() {
-                var field1 = $('#titleInput').val();
-                var field2 = $('#contentInput').val();
-                if (field1 && field2) {
+                var title = $('#titleInput').val();
+                var text = $('#contentInput').val();
+                if (title && text) {
                     $.ajax({
-                        url: '{{ route('add.item') }}',
+                        url: '{{ route('add.tweet') }}',
                         type: 'POST',
-                        data: { field1: field1, field2: field2 },
+                        data: { title: title, text: text },
                         success: function(response) {
                             $('#itemList tbody').empty();
                             $.each(response.items, function(index, item) {
