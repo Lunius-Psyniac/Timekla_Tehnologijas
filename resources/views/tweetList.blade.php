@@ -26,7 +26,7 @@
             display: block;
             margin-top: 10px;
             margin-bottom: 10px;
-            width: 1000px;
+            width: 500px;
             height: 200px;
             overflow-wrap: break-word;
             resize: vertical;
@@ -34,7 +34,7 @@
         #titleInput {
             display: block;
             margin-top: 10px;
-            width: 1000px;
+            width: 500px;
             height: 50px;
         }
         #itemList {
@@ -47,7 +47,7 @@
             font-size: 40px;
         }
         table {
-            width: 1000px; /* Set the table width to 100% */
+            width: 500px; /* Set the table width to 100% */
             border-collapse: collapse; /* Collapse borders between cells */
             margin-bottom: 20px; /* Add margin to separate the table and input fields */
         }
