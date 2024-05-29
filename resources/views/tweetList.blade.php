@@ -67,14 +67,26 @@
         <h1>Tweets</h1>
         <table id="itemList">
         <tbody>
-                @foreach ($tweets as $key => $item)
-                    <tr>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->content }}</td>
-                        <td style='width:30px'><span class="deleteItemButton" data-index="{{ $item->id }}">X</span></td>
-                    </tr>
-                @endforeach
-            </tbody>
+        <td>User</td>
+        <td>Title</td>
+        <td>Comment</td>
+        <td>Delete?</td>
+    @foreach ($tweets as $tweet)
+        <tr>
+            <td>{{ $tweet->user->name }}</td>
+            <td>{{ $tweet->title }}</td>
+            <td>{{ $tweet->content }}</td>
+            @if ($tweet->user_id === Auth::id())
+                <td style='width:30px'>
+                    <span class="deleteItemButton" data-index="{{ $tweet->id }}">X</span>
+                </td>
+            @else
+                <td style='width:30px'></td>
+            @endif
+        </tr>
+    @endforeach
+</tbody>
+
         </table>
         <input type="text" id="titleInput" placeholder="Title">
         <textarea type="text" id="contentInput" placeholder="Comment"></textarea>

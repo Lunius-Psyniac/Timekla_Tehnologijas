@@ -12,7 +12,7 @@ class TweetController extends Controller
 
     public function index(){
         $tweets = Tweet::with('user')->get();
-        // dd($tweets->toArray());
+        //dd($tweets->toArray());
         return view('tweetList', compact('tweets'));
     }
 
@@ -38,11 +38,5 @@ class TweetController extends Controller
         $tweetToDelete->delete();
 
         return 200;
-        // $index = $request->input('index');
-        // $items = session()->get('items', []);
-        // unset($items[$index]);
-        // session()->put('items', $items);
-
-        // return response()->json(['items' => $items]);
     }
 }
