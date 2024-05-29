@@ -107,12 +107,9 @@
                     url: '{{ route('delete.item') }}',
                     type: 'POST',
                     data: { id: data },
-                    // success: function(response) {
-                    //     $('#itemList tbody').empty();
-                    //     $.each(response.items, function(index, item) {
-                    //         $('#itemList tbody').append('<tr><td>' + item + '<td style="width:30px"><span class="deleteItemButton" data-index="' + index + '">X</span></td></tr>');
-                    //     });
-                    // },
+                    success: function(response) {
+                        location.reload();
+                    },
                     error: function(xhr) {
                         alert('An error occurred.');
                         console.log(xhr);
@@ -129,12 +126,7 @@
                         type: 'POST',
                         data: { title: title, text: text },
                         success: function(response) {
-                            $('#itemList tbody').empty();
-                            $.each(response.items, function(index, item) {
-                                $('#itemList tbody').append('<tr><td>' + item + '<td style="width:30px"><span class="deleteItemButton" data-index="' + index + '">X</span></td></tr>');
-                            });
-                            $('#titleInput').val('');
-                            $('#contentInput').val('');
+                        location.reload();
                         },
                         error: function(xhr) {
                             alert('An error occurred.');
