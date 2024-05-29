@@ -30,12 +30,18 @@
             height: 200px;
             overflow-wrap: break-word;
             resize: vertical;
+            
+            justify-content: center;
+            align-items: center;
         }
         #titleInput {
             display: block;
             margin-top: 10px;
             width: 500px;
             height: 50px;
+            
+            justify-content: center;
+            align-items: center;
         }
         #itemList {
             display: inline-block;
@@ -59,8 +65,6 @@
         .deleteItemButton {
             color: red;
             cursor: pointer;
-            
-            align-items: center;
         }
     </style>
 </head>
